@@ -595,14 +595,11 @@ class BillingKeyClient:
             request_body["bypass"] = bypass
         if notice_urls is not None:
             request_body["noticeUrls"] = notice_urls
-        query = []
         response = await self._client.request(
             "POST",
             f"{self._base_url}/billing-keys",
-            params=query,
             headers={
                 "Authorization": f"PortOne {self._secret}",
-                "User-Agent": self._user_agent,
             },
             json=request_body,
         )
